@@ -18,19 +18,17 @@ foreach($argv as $value)
   }
 }
 
-if($argv[TWEET_TYPE] == 'Song')
-{
-  $message = "Now playing: ".$argv[TITLE_ARG];
-  $url = 'https://api.twitter.com/1.1/statuses/update.json';
-  $requestMethod = 'POST';
-  $postfields = array(
-    'status' => $message
-  );
+$message = "Now playing: ".$title;
+$url = 'https://api.twitter.com/1.1/statuses/update.json';
+$requestMethod = 'POST';
+$postfields = array(
+  'status' => $message
+);
 
-  $twitter = new TwitterAPIExchange($twitterSettings);
-  echo $twitter->buildOauth($url, $requestMethod)
-    ->setPostfields($postfields)
-    ->performRequest();
-}
+$twitter = new TwitterAPIExchange($twitterSettings);
+echo $twitter->buildOauth($url, $requestMethod)
+  ->setPostfields($postfields)
+  ->performRequest();
+
 
 ?>
