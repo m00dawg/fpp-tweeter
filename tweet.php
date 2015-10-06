@@ -1,25 +1,21 @@
 <?php
-///opt/fpp/plugins/rds_plugin/callbacks --type media --data {"type":"both","Sequence":"rds test.fseq","Media":"test song.mp3","title":"Song Title","artist":"Song Artist"}
-
 require_once '/opt/fpp/www/common.php';
-
 require_once 'TwitterAPIExchange.php';
 require_once 'twitter.conf.php';
 
 if(!isset($argv))
   exit(1);
 
-foreach($argv as $value)
-{
-  if(preg_match('/^title/', $value))
-  {
-    $title = explode(':', $value)[1];
-    break;
-  }
-}
+/*
+ * This is a bit hacky. We know that the JSON payload is argument 4 provided
+ * by FPP, and this is what we are really after for our Tweets.
+ * We decode it into an associative array for later use.
+ */
+$args = json_decode($argv[4], true);
 
-$message = "Now playing: ".$title;
-$url = 'https://api.twitter.com/1.1/statuses/update.json';
+$message = "Now playing: ".$args['title'];
+
+$url = $twitterEndpoint."/statuses/update.json';
 $requestMethod = 'POST';
 $postfields = array(
   'status' => $message

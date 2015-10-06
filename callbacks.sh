@@ -1,16 +1,6 @@
 #!/bin/bash
+#LOG='/home/fpp/media/plugins/tweeter/debug.log'
+LOG='/dev/null'
+exec >> $LOG
 
-
-if [ $1 == "--list" ]
-then
-    echo media
-fi
-
-if [ $1 == "--type" ]
-then
-    if [ $2 == "media" ]
-    then
-#        php ./tweet.php Song "$@"
-        php ./tweet.php "$@"
-    fi
-fi
+php /home/fpp/media/plugins/tweeter/tweet.php "$@"
