@@ -1,6 +1,5 @@
 #!/bin/bash
 
-TITLE_ARG=$7
 
 if [ $1 == "--list" ]
 then
@@ -11,7 +10,7 @@ if [ $1 == "--type" ]
 then
     if [ $2 == "media" ]
     then
-        TITLE=`echo $TITLE_ARG | awk -F: {'print $2'}`
-        php ./tweet.php Song "$TITLE"
+#        php ./tweet.php Song "$@"
+        php ./tweet.php "$@"
     fi
 fi

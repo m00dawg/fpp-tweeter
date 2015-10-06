@@ -6,11 +6,17 @@ require_once '/opt/fpp/www/common.php';
 require_once 'TwitterAPIExchange.php';
 require_once 'twitter.conf.php';
 
-const TWEET_TYPE=1;
-const TITLE_ARG=2;
-
 if(!isset($argv))
   exit(1);
+
+foreach($argv as $value)
+{
+  if(preg_match('/^title/', $value))
+  {
+    $title = explode(':', $value)[1];
+    break;
+  }
+}
 
 if($argv[TWEET_TYPE] == 'Song')
 {
