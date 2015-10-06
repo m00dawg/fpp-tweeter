@@ -1,5 +1,8 @@
 <?php
 ///opt/fpp/plugins/rds_plugin/callbacks --type media --data {"type":"both","Sequence":"rds test.fseq","Media":"test song.mp3","title":"Song Title","artist":"Song Artist"}
+
+require_once '/opt/fpp/www/commond.php';
+
 require_once 'TwitterAPIExchange.php';
 require_once 'twitter.conf.php';
 
