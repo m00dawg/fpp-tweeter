@@ -1,7 +1,7 @@
 <?php
 ///opt/fpp/plugins/rds_plugin/callbacks --type media --data {"type":"both","Sequence":"rds test.fseq","Media":"test song.mp3","title":"Song Title","artist":"Song Artist"}
 
-require_once '/opt/fpp/www/commond.php';
+require_once '/opt/fpp/www/common.php';
 
 require_once 'TwitterAPIExchange.php';
 require_once 'twitter.conf.php';
@@ -20,7 +20,9 @@ if($argv[TWEET_TYPE] == 'Song')
   $postfields = array(
     'status' => $message
   );
-  echo $message;
+//  echo $message;
+
+  echo ReadSettingFromFile('SongMessagePrefix', 'tweeter');
 
   //$twitter = new TwitterAPIExchange($twitterSettings);
   //echo $twitter->buildOauth($url, $requestMethod)
