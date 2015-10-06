@@ -20,18 +20,11 @@ if($argv[TWEET_TYPE] == 'Song')
   $postfields = array(
     'status' => $message
   );
-//  echo $message;
 
-  echo ReadSettingFromFile('SongMessagePrefix', 'tweeter');
-
-  //$twitter = new TwitterAPIExchange($twitterSettings);
-  //echo $twitter->buildOauth($url, $requestMethod)
-  //  ->setPostfields($postfields)
-  //  ->performRequest();
+  $twitter = new TwitterAPIExchange($twitterSettings);
+  echo $twitter->buildOauth($url, $requestMethod)
+    ->setPostfields($postfields)
+    ->performRequest();
 }
-
-//$titleArgIndex = 7;
-//$title = explode(':',$argv[$titleArgIndex]);
-
 
 ?>
