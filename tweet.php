@@ -13,9 +13,9 @@ if(!isset($argv))
  */
 $args = json_decode($argv[4], true);
 
-$message = "Now playing: ".$args['title']." by ".$args['artist']. " at ".date('g:i');
+$message = "Now playing: ".$args['title']." by ".$args['artist']." at ".date('g:i');
 
-$url = $twitterEndpoint."/statuses/update.json';
+$url = $twitterEndpoint.'/statuses/update.json';
 $requestMethod = 'POST';
 $postfields = array(
   'status' => $message
